@@ -1,0 +1,6 @@
+{
+  "name": "Luxe Fashion Ecommerce",
+  "description": "A luxury fashion e-commerce platform with a fully functional frontend, mocked backend, checkout workflow, and admin dashboard layout.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
