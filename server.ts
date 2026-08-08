@@ -412,7 +412,8 @@ app.post("/api/admin/orders/:id/status", async (req, res) => {
 if (!process.env.VERCEL) {
   async function startServer() {
     if (process.env.NODE_ENV !== "production") {
-      const { createServer: createViteServer } = await import("vite");
+      const viteModule = "vite";
+      const { createServer: createViteServer } = await import(/* @vite-ignore */ viteModule);
       const vite = await createViteServer({
         server: { middlewareMode: true },
         appType: "spa",
