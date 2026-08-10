@@ -41,6 +41,7 @@ export const mockProducts: Product[] = [
     reviews: 124,
     inStock: true,
     isNew: true,
+    isFeatured: true,
   },
   {
     id: "866db17c-6dae-48d5-95b1-0d6d88a4d5ce",
@@ -53,6 +54,7 @@ export const mockProducts: Product[] = [
     rating: 4.9,
     reviews: 89,
     inStock: true,
+    isFeatured: true,
     colors: ["Black", "Brown", "Tan"],
   },
   {

@@ -90,6 +90,7 @@ export const useProductStore = create<ProductStore>((set) => ({
             inStock: item.in_stock && totalStock > 0,
             stockQuantity: totalStock,
             isNew: item.is_new,
+            isFeatured: item.is_featured,
             colors: colors,
             sizes: sizes,
             variants: variants

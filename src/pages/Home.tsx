@@ -12,7 +12,7 @@ export const Home = () => {
     fetchProducts();
   }, [fetchProducts]);
 
-  const featuredProducts = products.slice(0, 4);
+  const featuredProducts = products.filter(p => p.isFeatured);
 
   return (
     <div className="overflow-hidden">

@@ -14,8 +14,8 @@ export const Footer = () => {
               Redefining luxury fashion. Explore our curated collections of premium apparel, accessories, and cosmetics.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="hover:text-white transition-colors"><Facebook className="w-5 h-5" /></a>
-              <a href="#" className="hover:text-white transition-colors"><Instagram className="w-5 h-5" /></a>
+              <a href="https://www.facebook.com/share/1JUBviNnne/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><Facebook className="w-5 h-5" /></a>
+              <a href="https://www.instagram.com/mrjerrytalez?igsh=MW12Y2N3aDYzeTYzeA==" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><Instagram className="w-5 h-5" /></a>
               <a href="#" className="hover:text-white transition-colors"><Twitter className="w-5 h-5" /></a>
               <a href="#" className="hover:text-white transition-colors"><Youtube className="w-5 h-5" /></a>
             </div>
@@ -48,15 +48,15 @@ export const Footer = () => {
             <ul className="space-y-4 text-sm">
               <li className="flex items-start">
                 <MapPin className="w-5 h-5 mr-3 shrink-0 text-slate-400" />
-                <span>123 Luxury Avenue, Fashion District, NY 10001</span>
+                <span>No. 2 Itohan Street, Off Balogun Bus Stop</span>
               </li>
               <li className="flex items-center">
                 <Phone className="w-5 h-5 mr-3 shrink-0 text-slate-400" />
-                <span>+1 (800) 123-4567</span>
+                <a href="tel:07030916304" className="hover:text-white transition-colors">07030916304</a>
               </li>
               <li className="flex items-center">
                 <Mail className="w-5 h-5 mr-3 shrink-0 text-slate-400" />
-                <span>support@luxe.com</span>
+                <a href="mailto:techwithdon@gmail.com" className="hover:text-white transition-colors">techwithdon@gmail.com</a>
               </li>
             </ul>
           </div>

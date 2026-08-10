@@ -348,7 +348,7 @@ export const ProductsView = () => {
                   </label>
                   <label className="flex items-center gap-2 cursor-pointer">
                     <input type="checkbox" checked={formData.is_featured} onChange={e => setFormData({...formData, is_featured: e.target.checked})} className="rounded text-slate-900 focus:ring-slate-900" />
-                    <span className="text-sm text-slate-700">Featured Product</span>
+                    <span className="text-sm text-slate-700">Show on Homepage</span>
                   </label>
                   <label className="flex items-center gap-2 cursor-pointer">
                     <input type="checkbox" checked={formData.in_stock} onChange={e => setFormData({...formData, in_stock: e.target.checked})} className="rounded text-slate-900 focus:ring-slate-900" />
@@ -447,7 +447,7 @@ export const ProductsView = () => {
                     <div className="font-medium text-slate-900">{product.name}</div>
                     <div className="text-xs text-slate-500 flex gap-2 mt-0.5">
                       {product.isNew && <span className="text-blue-600">New</span>}
-                      {product.isFeatured && <span className="text-amber-600">Featured</span>}
+                      {product.isFeatured && <span className="text-amber-600">Homepage</span>}
                     </div>
                   </div>
                 </td>
