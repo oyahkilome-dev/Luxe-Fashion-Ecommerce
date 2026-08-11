@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Star, Truck, ShieldCheck, Clock } from 'lucide-react';
 import { useProductStore } from '../store/productStore';
 import { ProductCard } from '../components/product/ProductCard';
+import { formatCurrency } from '../lib/utils';
 
 export const Home = () => {
   const { products, fetchProducts, isLoading } = useProductStore();
@@ -68,7 +69,7 @@ export const Home = () => {
               <Truck className="w-8 h-8 text-blue-600" />
               <div>
                 <h4 className="font-semibold text-slate-900">Free Global Shipping</h4>
-                <p className="text-sm text-slate-500">On all orders over $200</p>
+                <p className="text-sm text-slate-500">On all orders over {formatCurrency(200)}</p>
               </div>
             </div>
             <div className="flex items-center justify-center text-center md:text-left md:justify-start gap-4">

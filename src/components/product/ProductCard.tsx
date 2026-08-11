@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { ShoppingBag, Heart, Star } from 'lucide-react';
 import { Product } from '../../data/mockProducts';
 import { useCartStore } from '../../store/cartStore';
+import { formatCurrency } from '../../lib/utils';
 
 interface ProductCardProps {
   product: Product;
@@ -92,9 +93,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <p className="text-xs font-medium text-slate-500 tracking-wider uppercase">{product.brand}</p>
           <h3 className="text-sm font-medium text-slate-900 truncate">{product.name}</h3>
           <div className="flex items-center gap-2">
-            <span className="text-sm font-semibold text-slate-900">${product.price.toFixed(2)}</span>
+            <span className="text-sm font-semibold text-slate-900">{formatCurrency(product.price)}</span>
             {product.originalPrice && (
-              <span className="text-sm text-slate-500 line-through">${product.originalPrice.toFixed(2)}</span>
+              <span className="text-sm text-slate-500 line-through">{formatCurrency(product.originalPrice)}</span>
             )}
           </div>
           <div className="flex items-center gap-1 mt-1">

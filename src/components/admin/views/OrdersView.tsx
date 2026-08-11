@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Eye, Search, Filter, X, CheckCircle, Clock, Truck, Package, XCircle, RefreshCw } from 'lucide-react';
+import { formatCurrency } from '../../../lib/utils';
 
 export const OrdersView = () => {
   const [orders, setOrders] = useState<any[]>([]);
@@ -135,7 +136,7 @@ export const OrdersView = () => {
                     <div className="text-slate-500 text-xs">{order.customer_email}</div>
                   </td>
                   <td className="px-6 py-4 text-slate-600">{new Date(order.created_at).toLocaleString()}</td>
-                  <td className="px-6 py-4 text-slate-900 font-medium">₦{Number(order.total_amount).toFixed(2)}</td>
+                  <td className="px-6 py-4 text-slate-900 font-medium">{formatCurrency(Number(order.total_amount))}</td>
                   <td className="px-6 py-4">{getStatusBadge(order.status)}</td>
                   <td className="px-6 py-4 text-right">
                     <button 
@@ -189,7 +190,7 @@ export const OrdersView = () => {
                           <p className="text-sm text-slate-500">Qty: {item.quantity}</p>
                         </div>
                         <div className="text-right font-medium text-slate-900">
-                          ₦{Number(item.total_price).toFixed(2)}
+                          {formatCurrency(Number(item.total_price))}
                         </div>
                       </li>
                     ))}
@@ -252,10 +253,10 @@ export const OrdersView = () => {
                 <div className="bg-slate-50 p-5 rounded-lg border border-slate-100">
                   <h4 className="text-sm font-semibold text-slate-900 uppercase tracking-wider mb-3">Summary</h4>
                   <div className="space-y-2 text-sm">
-                    <div className="flex justify-between"><span className="text-slate-500">Subtotal</span> <span>₦{Number(selectedOrder.subtotal).toFixed(2)}</span></div>
-                    <div className="flex justify-between"><span className="text-slate-500">Shipping</span> <span>₦{Number(selectedOrder.shipping_fee).toFixed(2)}</span></div>
+                    <div className="flex justify-between"><span className="text-slate-500">Subtotal</span> <span>{formatCurrency(Number(selectedOrder.subtotal))}</span></div>
+                    <div className="flex justify-between"><span className="text-slate-500">Shipping</span> <span>{formatCurrency(Number(selectedOrder.shipping_fee))}</span></div>
                     <div className="border-t border-slate-200 pt-2 flex justify-between font-bold text-slate-900">
-                      <span>Total</span> <span>₦{Number(selectedOrder.total_amount).toFixed(2)}</span>
+                      <span>Total</span> <span>{formatCurrency(Number(selectedOrder.total_amount))}</span>
                     </div>
                   </div>
                 </div>

@@ -3,6 +3,7 @@ import { supabase } from '../../../lib/supabase';
 import { useProductStore } from '../../../store/productStore';
 import { ProductVariant } from '../../../data/mockProducts';
 import { Image as ImageIcon, Trash2, Star, UploadCloud, X } from 'lucide-react';
+import { formatCurrency } from '../../../lib/utils';
 
 export const ProductsView = () => {
   const { products, fetchProducts } = useProductStore();
@@ -452,7 +453,7 @@ export const ProductsView = () => {
                   </div>
                 </td>
                 <td className="px-6 py-4 text-slate-600 capitalize">{product.category || 'Uncategorized'}</td>
-                <td className="px-6 py-4 text-slate-900 font-medium">${Number(product.price).toFixed(2)}</td>
+                <td className="px-6 py-4 text-slate-900 font-medium">{formatCurrency(Number(product.price))}</td>
                 <td className="px-6 py-4 text-slate-600">
                   {product.variants?.length > 0 ? (
                     <span>{product.variants.reduce((acc: number, v: any) => acc + (v.stock_quantity || 0), 0)} in {product.variants.length} vars</span>

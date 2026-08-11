@@ -6,6 +6,7 @@ import * as z from 'zod';
 import { useCartStore } from '../store/cartStore';
 import { ShieldCheck, Loader2 } from 'lucide-react';
 import { usePaystackPayment } from 'react-paystack';
+import { formatCurrency } from '../lib/utils';
 
 const checkoutSchema = z.object({
   email: z.string().email(),
@@ -201,7 +202,7 @@ export const Checkout = () => {
                     disabled={isProcessing || items.length === 0}
                     className="w-full bg-slate-900 text-white px-4 py-4 font-medium hover:bg-slate-800 transition-colors rounded-sm disabled:opacity-50"
                   >
-                    {isProcessing ? 'Processing...' : `Pay ₦${grandTotal.toFixed(2)}`}
+                    {isProcessing ? 'Processing...' : `Pay ${formatCurrency(grandTotal)}`}
                   </button>
                 </div>
               </div>
@@ -221,7 +222,7 @@ export const Checkout = () => {
                     <div className="ml-4 flex-1">
                       <h4 className="text-sm font-medium text-slate-900">{item.name}</h4>
                       <p className="text-xs text-slate-500 mt-1">Qty: {item.quantity} {item.size && `| Size: ${item.size}`}</p>
-                      <p className="text-sm font-medium text-slate-900 mt-1">₦{(item.price * item.quantity).toFixed(2)}</p>
+                      <p className="text-sm font-medium text-slate-900 mt-1">{formatCurrency(item.price * item.quantity)}</p>
                     </div>
                   </li>
                 ))}
@@ -231,17 +232,17 @@ export const Checkout = () => {
                 <dl className="-my-4 divide-y divide-slate-200 text-sm">
                   <div className="flex items-center justify-between py-3">
                     <dt className="text-slate-600">Subtotal</dt>
-                    <dd className="font-medium text-slate-900">₦{cartTotal.toFixed(2)}</dd>
+                    <dd className="font-medium text-slate-900">{formatCurrency(cartTotal)}</dd>
                   </div>
                   <div className="flex items-center justify-between py-3">
                     <dt className="text-slate-600">Shipping</dt>
                     <dd className="font-medium text-slate-900">
-                      {shipping === 0 ? 'Free' : `$${shipping.toFixed(2)}`}
+                      {shipping === 0 ? 'Free' : formatCurrency(shipping)}
                     </dd>
                   </div>
                   <div className="flex items-center justify-between py-3">
                     <dt className="text-lg font-bold text-slate-900">Total</dt>
-                    <dd className="text-lg font-bold text-slate-900">₦{grandTotal.toFixed(2)}</dd>
+                    <dd className="text-lg font-bold text-slate-900">{formatCurrency(grandTotal)}</dd>
                   </div>
                 </dl>
               </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Package, Heart, MapPin, User, LogOut } from 'lucide-react';
+import { formatCurrency } from '../lib/utils';
 
 export const Dashboard = () => {
   return (
@@ -59,7 +60,7 @@ export const Dashboard = () => {
                       </div>
                       <div>
                         <p className="text-xs text-slate-500 uppercase tracking-wider font-semibold mb-1">Total</p>
-                        <p className="text-sm font-medium text-slate-900">$234.50</p>
+                        <p className="text-sm font-medium text-slate-900">{formatCurrency(234.50)}</p>
                       </div>
                       <div>
                         <p className="text-xs text-slate-500 uppercase tracking-wider font-semibold mb-1">Order #</p>

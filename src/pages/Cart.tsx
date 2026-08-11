@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCartStore } from '../store/cartStore';
 import { Trash2, ArrowRight } from 'lucide-react';
+import { formatCurrency } from '../lib/utils';
 
 export const Cart = () => {
   const { items, removeItem, updateQuantity, total } = useCartStore();
@@ -49,7 +50,7 @@ export const Cart = () => {
                           <h3>
                             <Link to={`/product/${item.id}`}>{item.name}</Link>
                           </h3>
-                          <p className="ml-4">${(item.price * item.quantity).toFixed(2)}</p>
+                          <p className="ml-4">{formatCurrency(item.price * item.quantity)}</p>
                         </div>
                         <p className="mt-1 text-sm text-slate-500">
                           {item.color && `Color: ${item.color}`}
@@ -94,17 +95,17 @@ export const Cart = () => {
                 <dl className="-my-4 divide-y divide-slate-200 text-sm">
                   <div className="flex items-center justify-between py-4">
                     <dt className="text-slate-600">Subtotal</dt>
-                    <dd className="font-medium text-slate-900">${cartTotal.toFixed(2)}</dd>
+                    <dd className="font-medium text-slate-900">{formatCurrency(cartTotal)}</dd>
                   </div>
                   <div className="flex items-center justify-between py-4">
                     <dt className="text-slate-600">Shipping</dt>
                     <dd className="font-medium text-slate-900">
-                      {shipping === 0 ? 'Free' : `$${shipping.toFixed(2)}`}
+                      {shipping === 0 ? 'Free' : formatCurrency(shipping)}
                     </dd>
                   </div>
                   <div className="flex items-center justify-between py-4">
                     <dt className="text-base font-bold text-slate-900">Order Total</dt>
-                    <dd className="text-base font-bold text-slate-900">${grandTotal.toFixed(2)}</dd>
+                    <dd className="text-base font-bold text-slate-900">{formatCurrency(grandTotal)}</dd>
                   </div>
                 </dl>
               </div>

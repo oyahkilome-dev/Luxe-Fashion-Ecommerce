@@ -6,6 +6,7 @@ import { OrdersView } from '../components/admin/views/OrdersView';
 import { ProductsView } from '../components/admin/views/ProductsView';
 import { supabase } from '../lib/supabase';
 import { Session } from '@supabase/supabase-js';
+import { formatCurrency } from '../lib/utils';
 
 export const Admin = () => {
   const [activeView, setActiveView] = useState<'dashboard' | 'products' | 'orders' | 'settings'>('dashboard');
@@ -244,7 +245,7 @@ export const Admin = () => {
               <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
                 <div className="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
                   <p className="text-sm font-medium text-slate-500 mb-1">Total Revenue</p>
-                  <h3 className="text-2xl font-bold text-slate-900">$124,563.00</h3>
+                  <h3 className="text-2xl font-bold text-slate-900">{formatCurrency(124563.00)}</h3>
                   <p className="text-xs text-green-600 mt-2 font-medium">+14% from last month</p>
                 </div>
                 <div className="bg-white p-6 rounded-lg shadow-sm border border-slate-200">

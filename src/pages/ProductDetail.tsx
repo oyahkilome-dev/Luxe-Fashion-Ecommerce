@@ -4,6 +4,7 @@ import { useCartStore } from '../store/cartStore';
 import { useProductStore } from '../store/productStore';
 import { Star, Truck, ShieldCheck, ArrowRight, Heart, RefreshCw, ShoppingBag, ChevronRight, ChevronLeft } from 'lucide-react';
 import { ProductCard } from '../components/product/ProductCard';
+import { formatCurrency } from '../lib/utils';
 
 export const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -200,9 +201,9 @@ export const ProductDetail = () => {
             </div>
 
             <div className="flex items-center gap-4 mb-6">
-              <span className="text-3xl font-bold text-slate-900">${currentPrice.toFixed(2)}</span>
+              <span className="text-3xl font-bold text-slate-900">{formatCurrency(currentPrice)}</span>
               {product.originalPrice && product.originalPrice > currentPrice && (
-                <span className="text-xl text-slate-400 line-through">${product.originalPrice.toFixed(2)}</span>
+                <span className="text-xl text-slate-400 line-through">{formatCurrency(product.originalPrice)}</span>
               )}
               {currentVariant?.sku && (
                 <span className="ml-auto text-xs text-slate-400 bg-slate-100 px-2 py-1 rounded">SKU: {currentVariant.sku}</span>
@@ -310,7 +311,7 @@ export const ProductDetail = () => {
                 <Truck className="w-6 h-6 text-slate-700 shrink-0" />
                 <div>
                   <h4 className="font-semibold text-slate-900 text-sm">Delivery & Returns</h4>
-                  <p className="text-sm text-slate-600 mt-1">Free standard shipping on orders over $200. Estimated delivery in 3-5 business days.</p>
+                  <p className="text-sm text-slate-600 mt-1">Free standard shipping on orders over {formatCurrency(200)}. Estimated delivery in 3-5 business days.</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">

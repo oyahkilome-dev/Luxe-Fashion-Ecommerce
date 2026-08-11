@@ -2,6 +2,7 @@ import React from 'react';
 import { useLocation, Link, Navigate } from 'react-router-dom';
 import { CheckCircle, ShoppingBag, MessageCircle, Package } from 'lucide-react';
 import { CartItem } from '../store/cartStore';
+import { formatCurrency } from '../lib/utils';
 
 interface LocationState {
   orderNumber: string;
@@ -22,8 +23,8 @@ export const PaymentSuccess = () => {
 
   const { orderNumber, customerName, amount, reference, items, grandTotal } = state;
 
-  const waNumber = "234000000000"; // Can be loaded from config
-  const message = `Hello,\n\nI have successfully made payment.\n\nOrder Number: ${orderNumber}\nCustomer Name: ${customerName}\nAmount Paid: ₦${(amount || 0).toFixed(2)}\n\nKindly confirm my payment and process my order.\n\nThank you.`;
+  const waNumber = "2347030916304"; // Can be loaded from config
+  const message = `Hello,\n\nI have successfully made payment.\n\nOrder Number: ${orderNumber}\nCustomer Name: ${customerName}\nAmount Paid: ${formatCurrency(amount || 0)}\n\nKindly confirm my payment and process my order.\n\nThank you.`;
   const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
 
   return (
@@ -56,7 +57,7 @@ export const PaymentSuccess = () => {
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-slate-500">Amount Paid</span>
-                  <span className="font-medium text-slate-900">₦{(amount || 0).toFixed(2)}</span>
+                  <span className="font-medium text-slate-900">{formatCurrency(amount || 0)}</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-slate-500">Payment Status</span>
@@ -78,7 +79,7 @@ export const PaymentSuccess = () => {
                       </p>
                     </div>
                     <div className="font-medium text-slate-900 text-right">
-                      ₦{(item.price * item.quantity).toFixed(2)}
+                      {formatCurrency(item.price * item.quantity)}
                     </div>
                   </div>
                 )) : (
@@ -88,7 +89,7 @@ export const PaymentSuccess = () => {
               
               <div className="border-t border-slate-200 mt-4 pt-4 flex justify-between items-center text-sm">
                 <span className="font-medium text-slate-900">Total</span>
-                <span className="font-bold text-slate-900">₦{(grandTotal || amount || 0).toFixed(2)}</span>
+                <span className="font-bold text-slate-900">{formatCurrency(grandTotal || amount || 0)}</span>
               </div>
             </div>
           </div>
